@@ -1,0 +1,62 @@
+.bg-loaded header {
+	animation: fadeInDown 0.8s;
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.bg-loaded .main {
+	animation: fadeInTop 1.5s;
+}
+@keyframes fadeInTop {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	50%{
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.cd-projects-previews li {
+	height: max-content;
+	width: 100%;
+	float: none;
+}
+
+header {
+	background: url(../img/img-1.jpg);
+	height: 60vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
+
+header h3 {
+	font-size: 5vh;
+	font-weight: 700;
+}
+
+section.main {
+	padding: 4rem 5%;
+	color: #000;
+	width: 100%;
+	margin: 0 auto;
+	background: #f1f1f1;
+	height: max-content;
+}

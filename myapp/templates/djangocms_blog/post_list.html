@@ -1,0 +1,57 @@
+{% extends "djangocms_blog/base.html" %}
+{% load i18n easy_thumbnails_tags sekizai_tags static %}{% spaceless %}
+
+{% block canonical_url %}
+<link rel="canonical" href="{{ view.get_view_url }}" />{% endblock canonical_url %}
+
+{% block content_blog %}
+<div class="cd-projects-container">
+	<ul class="cd-projects-previews">
+		<li>
+			<section class="blog-list bg-loaded">
+				{% block blog_title %}
+				<header class="header">
+					<h3>News</h3>
+				</header>
+				{% endblock %}
+				<section class="main">
+					{% for post in post_list %}
+					{% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+					{% empty %}
+					<p class="blog-empty">{% trans "No article found." %}</p>
+					{% endfor %}
+					{% if author or archive_date or tagged_entries %}
+					<p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
+					{% endif %}
+					{% if is_paginated %}
+					<nav class="{% firstof css_grid instance.css_grid %} pagination">
+						{% if page_obj.has_previous %}
+						<a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&laquo;
+							{% trans "previous" %}</a>
+						{% endif %}
+						<span class="current">
+							{% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
+						</span>
+						{% if page_obj.has_next %}
+						<a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a>
+						{% endif %}
+					</nav>
+					{% endif %}
+				</section>
+			</section>
+		</li>
+	</ul>
+	<ul class="cd-projects">
+		<li>
+
+		</li>
+	</ul>
+</div>
+{% addtoblock 'css' %}
+<link rel="stylesheet" href="{% static 'css/post_list.css' %}">
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+<script src="{% static 'js/post_list.js' %}"></script>
+{% endaddtoblock %}
+{% endblock %}
+{% endspaceless %}

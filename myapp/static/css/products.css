@@ -1,0 +1,146 @@
+
+:root {
+	--off-white: #f2f2f2;
+    --grey: #737373;
+    --light-grey: #939393;
+    --white: #fff;
+    --intense: #373737;
+}
+.filters,
+.filters2{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--off-white);
+}
+.filters .container,
+.filters2 .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+}
+.filters span,
+.filters2 span{
+    position: absolute;
+    top: 0.5rem;
+    font-size: 60%;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--light-grey);
+}
+/* .filters .is-checked,
+.filters2 .is-checked{
+    background-color: var(--white);
+} */
+.puffs .is-checked{
+    background-color: #df2088;
+    color: var(--white);
+}
+.puffs span{
+    color: #df2088;
+}
+.hookah .is-checked{
+    background-color: #ef451b;
+    color: var(--white);
+}
+.hookah span{
+    color: #ef451b;
+}
+.filters button,
+.filters2 button{
+    padding: 1rem;
+    cursor: pointer;
+    color: var(--light-grey);
+    border: none;
+    background: transparent;
+}
+.filters .button-group,
+.filters2 .button-group{
+    border: 1px solid var(--white);
+    border-radius: .3rem;
+}
+.grid-cards,
+.grid-cards2{   
+    margin: 4rem auto !important;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--white);
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 5px 5px 20px #C5C5C5, -5px -5px 20px #fff;
+    background-color: var(--off-white);
+    float: left;
+    width: calc(300px - 4rem);
+    transition: all .3s !important;
+}
+.card:hover{
+    box-shadow: 25px 25px 41px #969696, -25px -25px 41px #FFFFFF;
+    transform: scale(1.01) !important;
+}
+.puffs .card{
+    height: 706px;
+}
+.hookah .card{
+    height: 380px;
+}
+.card.intense{
+    background-color: var(--intense);
+    border-color: var(--intense);
+}
+.card.intense .option-2, .card.intense .title, .card.intense .option-1{
+    color: var(--off-white);
+}
+.card-img{
+    position: relative;
+    text-align: center;
+}
+.card-img .option-2{
+    position: absolute;
+    top: 0;
+    font-size: 75%;
+    text-transform: capitalize;
+    color: var(--light-grey);
+    font-weight: 600;
+}
+.hookah .card-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    margin: 1rem auto;
+}
+.puff .card-img img{
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    margin: 1rem auto;
+}
+.card-body{
+    margin-top: 1rem;
+}
+.card .title{
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+.card .description{
+    color: var(--light-grey);
+    padding: 1rem 0;
+    font-size: 14px;
+    line-height: normal;
+}
+.card .option-1{
+    font-weight: 600;
+    color: var(--grey);
+    text-align: right;
+}

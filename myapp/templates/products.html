@@ -1,0 +1,120 @@
+{% load cms_tags cache i18n sekizai_tags thumbnail static %}
+
+<div class="card grid-item {{ instance.name|truncatewords:1|slice:"-2" }} {{ instance.option_2 }} {{ instance.option_1|slice:"-1" }}">
+    <div class="card-img">
+      <span class="option-2">{{ instance.option_2 }}</span>
+      {% thumbnail instance.image 450x450 upscale as thumb %}
+      <img src="{{ thumb.url }}" alt="{{ instance.name }}" />
+    </div>
+    <div class="card-body">
+      <p class="title">{{ instance.name }}</p>
+      <p class="description">{{ instance.description }}</p>
+      <p class="option-1">{{ instance.option_1 }}</p>
+    </div>
+</div>
+
+{% addtoblock 'css' %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endaddtoblock %}
+{% addtoblock 'js' %}
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  <script>
+    // prop for Hookah filtering
+    jQuery(window).on('load', function() {
+      
+      // init Isotope
+      var $grid = $('.grid-cards').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows',
+        hiddenStyle: {
+          opacity: 0
+        },
+        visibleStyle: {
+          opacity: 1
+        }
+        });
+      
+      // store filter for each group
+      var filters = {};
+      
+      $('.filters').on( 'click', '.button', function( event ) {
+      var $button = $( event.currentTarget );
+      // get group key
+      var $buttonGroup = $button.parents('.button-group');
+      var filterGroup = $buttonGroup.attr('data-filter-group');
+      // set filter for group
+      filters[ filterGroup ] = $button.attr('data-filter');
+      // combine filters
+      var filterValue = concatValues( filters );
+      // set filter for Isotope
+      $grid.isotope({ filter: filterValue });
+      });
+      
+      // change is-checked class on buttons
+      $('.button-group').each( function( i, buttonGroup ) {
+      var $buttonGroup = $( buttonGroup );
+      $buttonGroup.on( 'click', 'button', function() {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        $( this ).addClass('is-checked');
+      });
+      });
+      // flatten object by concatting values
+      function concatValues( obj ) {
+      var value = '';
+      for ( var prop in obj ) {
+        value += obj[ prop ];
+      }
+      return value;
+      }
+      
+    });
+    // prop for Hookah filtering
+    jQuery(window).on('load', function() {
+      // init Isotope
+      var $grid = $('.grid-cards2').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows',
+        hiddenStyle: {
+          opacity: 0
+        },
+        visibleStyle: {
+          opacity: 1
+        }
+        });
+      
+      // store filter for each group
+      var filters2 = {};
+      
+      $('.filters2').on( 'click', '.button', function( event ) {
+      var $button = $( event.currentTarget );
+      // get group key
+      var $buttonGroup = $button.parents('.button-group');
+      var filterGroup = $buttonGroup.attr('data-filter-group');
+      // set filter for group
+      filters2[ filterGroup ] = $button.attr('data-filter');
+      // combine filters2
+      var filterValue = concatValues( filters2 );
+      // set filter for Isotope
+      $grid.isotope({ filter: filterValue });
+      });
+      
+      // change is-checked class on buttons
+      $('.button-group').each( function( i, buttonGroup ) {
+      var $buttonGroup = $( buttonGroup );
+      $buttonGroup.on( 'click', 'button', function() {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        $( this ).addClass('is-checked');
+      });
+      });
+      // flatten object by concatting values
+      function concatValues( obj ) {
+      var value = '';
+      for ( var prop in obj ) {
+        value += obj[ prop ];
+      }
+      return value;
+      }
+      
+    });
+	</script>
+{% endaddtoblock %}
