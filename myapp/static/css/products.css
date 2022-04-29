@@ -59,7 +59,8 @@
 .filters .button-group,
 .filters2 .button-group{
     border: 1px solid var(--white);
-    border-radius: .3rem;
+    border-radius: .5rem;
+    overflow: hidden;
 }
 .grid-cards,
 .grid-cards2{   
@@ -88,10 +89,15 @@
     transform: scale(1.01) !important;
 }
 .puffs .card{
-    height: 706px;
+    height: 672px;
 }
 .hookah .card{
     height: 380px;
+}
+.accessories .card{
+    height: 505px;
+    padding: 0;
+    width: calc(400px - 4rem);
 }
 .card.intense{
     background-color: var(--intense);
@@ -103,6 +109,9 @@
 .card-img{
     position: relative;
     text-align: center;
+}
+.card-img img{
+    margin: 2rem auto;
 }
 .card-img .option-2{
     position: absolute;
@@ -124,9 +133,18 @@
     object-fit: contain;
     margin: 1rem auto;
 }
-.card-body{
-    margin-top: 1rem;
+.accessories .card-body{
+    padding: 0 2rem;
 }
+.accessories .card-img img{
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    margin: 1rem auto;
+}
+/* .card-body{
+    margin-top: 1rem;
+} */
 .card .title{
     font-size: 3rem;
     font-weight: 700;
